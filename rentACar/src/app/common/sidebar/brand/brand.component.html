@@ -1,0 +1,27 @@
+<br>
+
+<p-toast position="top-right"></p-toast>
+    <ul class="list-group">
+      <a class="list-group-item list-group-item-disabled d-flex justify-content-between" style="background-color:#034078">
+    
+        <div style="color:white; font-size: larger;"><b>BRAND</b></div>
+    
+        <div class="mr-5"><button type="button" style="color:white" class="btn btn-link" routerLink="/addBrand"><i class="fa fa-plus"></i></button></div>
+      
+      </a>  
+    
+    
+      <div *ngFor="let brand of brands" >
+    
+        <li class="list-group-item list-group-item list-group-item-action d-flex justify-content-between" >
+    
+          <div (click)="getSelectedBrandId(brand)"><img src="{{brand.image}}" style="width:40px ; margin-right: 20px;">{{brand.name}}</div>
+    
+          <div class="mr-5"><button type="button" class="btn btn-link" (click)="deleteBrand(brand.id)"><i class="fa-solid fa-trash-can" style="color:#1282A2"></i></button>
+          <button type="button" class="btn btn-link" (click)="getBrandId(brand)" ><i class="fa-solid fa-pen-to-square" style="color: #034078"></i></button></div>
+      </div>
+    </ul>
+    
+    
+ 
+

@@ -1,0 +1,48 @@
+<br />
+<h4 style="text-align:center; color: #034078;">Details</h4>
+  <div class="card mb-3" style="max-width: 1000px; max-height: 600px;" *ngFor="let car of cars">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img src="{{car.image}}" width="500px" class="img-fluid rounded-start" alt="..." />
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h6 class="card-title" style="color:#1282A2">Brand of the vehicle: <a style="color: black">{{car.brandName}}</a></h6>
+          <h6 class="card-title" style="color:#1282A2">Color of the vehicle: <a style="color: black">{{car.colorName}}</a></h6>
+          <h6 class="card-title" style="color:#1282A2">Description of the vehicle: <a style="color: black">{{car.description}}</a></h6>
+          <h6 class="card-title" style="color:#1282A2">Daily price of the vehicle: <a style="color: black">{{car.dailyPrice}} ₺</a></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h4 style="text-align:center; color: #034078;">Additional Services</h4>
+  <div class="div" *ngFor="let additionalService of additionalServices">
+    
+    <hr>
+    <table class="table">
+      <tr>
+        <th scope="row"></th>
+        <td><img src="{{additionalService.image}}" style="width:80px"></td>
+        <td style="width: 400px">{{additionalService.name}}</td>
+        <td style="width: 200px">{{additionalService.price}}</td>
+        <td><i class="fa-solid fa-angle-down fa-xl" style="padding-right:5px;color:#034078"></i>Details</td>
+        <td><button class="btn btn-light"><i class="fa-solid fa-circle-plus fa-xl"  (click)="addToCart2(additionalService)" style="color: #034078; padding-right: 5px;" ></i>Add</button></td>
+      </tr>
+    </table>
+    <div class="div">
+        <a>
+          {{additionalService.description}}
+        </a>
+    </div>
+ </div>
+<br>
+<div class="row">
+  <div class="col-10"></div>
+  <div class="col-2">
+    <button class="btn btn-primary" type="button" style="width:150px; background-color:#034078" routerLink="/cart-detail">Go to Cart</button>
+  </div>
+</div>
+<br>
+    
+  

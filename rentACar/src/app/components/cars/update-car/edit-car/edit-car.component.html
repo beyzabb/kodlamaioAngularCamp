@@ -1,0 +1,78 @@
+<br>
+<h3 style="color:green ">Edit car</h3>
+<br>
+<p-toast position="top-right"></p-toast>
+<form [formGroup]="carEditForm" (ngSubmit)="edit()">
+      <div class="form-group">
+        <input class="input" type="number" id="id" name="id" formControlName="id" class="form-control" [(ngModel)]="car.id" />
+        <div clas="alert alert-danger" *ngIf="carEditForm.get('id').hasError('required')&&carEditForm.get('id').dirty">Product name is required</div>
+      </div>
+      <br>
+      <div class="form-group">
+        <input class="input" type="number" id="brandId" name="brandId" formControlName="brandId" class="form-control" [(ngModel)]="car.brandId"/>
+        <div clas="alert alert-danger" *ngIf="carEditForm.get('brandId').hasError('required')&&carEditForm.get('brandId').dirty">Product name is required</div>
+      </div>
+      <br>
+      <div class="form-group">
+        <select class="form-control"
+          required
+          name="brandId"
+          id="brandId"
+          formControlName="brandId"
+          
+        >
+          <option
+            *ngFor="let brand of brands"
+            [value]="brand.id"
+            
+          >{{brand.name}}</option>
+        </select>
+        <div
+          class="alert alert-danger"
+          *ngIf="carEditForm.get('brandId').hasError('required') && carEditForm.get('brandId').touched">
+          Brand required
+        </div>
+    </div>
+
+      <br>
+      <div class="form-group">
+        <input class="input" type="number" id="colorId" name="colorId" formControlName="colorId" class="form-control" [(ngModel)]="car.colorId"/>
+        <div clas="alert alert-danger" *ngIf="carEditForm.get('colorId').hasError('required')&&carEditForm.get('colorId').dirty">Product price is required</div>
+      </div>
+      
+      <br>
+      <div class="form-group">
+        <select class="form-control"
+          required
+          name="colorId"
+          id="colorId"
+          formControlName="colorId"
+          
+        >
+          <option
+            *ngFor="let color of colors"
+            [value]="color.id"
+            
+          >{{color.name}}</option>
+        </select>
+        <div
+          class="alert alert-danger"
+          *ngIf="carEditForm.get('colorId').hasError('required') && carEditForm.get('colorId').touched">
+          Color required
+        </div>
+    </div>
+
+
+      <br>
+      <div class="form-group">
+        <input class="input" type="text" id="image" name="image" formControlName="image" class="form-control" [(ngModel)]="car.image"/>
+        <div clas="alert alert-danger" *ngIf="carEditForm.get('image').hasError('required')&&carEditForm.get('image').dirty">Product price is required</div>
+      </div>
+      
+      <br>
+      <button type="submit" class="btn btn-success">Update</button>
+      
+</form>
+
+
+

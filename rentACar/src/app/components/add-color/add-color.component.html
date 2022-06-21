@@ -1,0 +1,18 @@
+<br>
+<h3 style="color: blue">Add new color</h3>
+<form [formGroup]="colorAddForm" (ngSubmit)="add()" >
+
+<br>
+<div class="form-group">
+    <input type="text" id="name" formControlName="name" class="form-control" placeholder="Brand name">
+    <div class="alert alert-danger" *ngIf="colorAddForm.get('name').hasError('required') && colorAddForm.get('name').dirty">Color name required</div>
+</div>
+<br>
+<div class="form-group">
+    <input type="text" id="image" formControlName="image" class="form-control">
+    <div class="alert alert-danger" *ngIf="colorAddForm.get('image').hasError('required') && colorAddForm.get('image').dirty">Color image required</div>
+</div>
+<br>
+<p-toast position="top-right"></p-toast>
+<button type="submit"  class="btn btn-primary"  [disabled]="colorAddForm.invalid">Add</button>
+</form>

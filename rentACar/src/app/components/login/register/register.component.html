@@ -1,0 +1,31 @@
+<br>
+<h3 style="color:#034078">Sign Up/Register</h3>
+<br>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group mb-3">
+        <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First name">
+        <div class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError('required') && registerForm.get('firstName').dirty">First name required</div>
+    </div>
+    <br>
+    <div class="form-group mb-3">
+        <input type="text" pInputText id="lastName" formControlName="lastName" class="form-control" placeholder="Last name">
+        <div class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError('required') && registerForm.get('lastName').dirty">Last name required<</div>
+    </div>
+    <br>
+    <div class="form-group mb-3">
+        <input type="email" pInputText id="email" formControlName="email" email class="form-control" placeholder="E-mail">
+        <div class="alert alert-danger" *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').dirty">E-mail required</div>
+    </div>
+    <br>
+    <div class="form-group mb-3">
+        <input type="password" pInputText id="password" formControlName="password" class="form-control" placeholder="Password">
+        <div class="alert alert-danger" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').dirty">Passsword required</div>
+    </div>
+    <br>
+
+    <div class="form-group mb-3">
+        <button type="submit" class="btn btn-primary mb-3" style="background-color:#034078" [disabled]="registerForm.invalid">Sign Up</button>
+        <a routerLink="/login" class="btn btn-link">Do you have a account? Sign In!</a>
+    </div>
+</form>
+

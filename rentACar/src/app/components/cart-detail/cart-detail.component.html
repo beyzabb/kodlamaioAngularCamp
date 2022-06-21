@@ -1,0 +1,103 @@
+<br>
+<div class="card">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col"><h4 style="color:#1282A2"><b>Cart Details</b></h4></div>
+                    <div class="col align-self-center text-right text-muted">Items: {{cartService.getTotalQuantity()}}</div>
+                </div>
+            </div>    
+            <div class="row border-top border-bottom">
+                <div class="row main align-items-center" *ngFor="let cartItem of cartItems">
+                    <div class="col-2"><img class="img-fluid" src="{{cartItem.car.image}}"></div>
+                    <div class="col">
+                        <div class="row text-muted">Car details</div>
+                        <div class="row">{{cartItem.car.brandName}}</div>
+                    </div>
+                    <div class="col">
+                        <a>{{cartItem.quantity}}</a>
+                    </div>
+                    <div class="col">{{cartItem.quantity*cartItem.car.dailyPrice}} TL<span class="close" (click)="removeFromCart(cartItem.car)">&#10005;</span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row main align-items-center" *ngFor="let additionalCartItem of additionalCartItems">
+                    <div class="col-2"><img class="img-fluid" src="{{additionalCartItem.additionalService.image}}"></div>
+                    <div class="col">
+                        <div class="row text-muted">Additional services details</div>
+                        <div class="row">{{additionalCartItem.additionalService.name}}</div>
+                        <div class="row">{{additionalCartItem.additionalService.description}}</div>
+
+                    </div>
+                    <div class="col">
+                        <a>{{additionalCartItem.quantity}}</a>
+                    </div>
+                    <div class="col">{{additionalCartItem.quantity*additionalCartItem.additionalService.price}} TL<span class="close" (click)="removeFromCart2(additionalCartItem.additionalService)">&#10005;</span></div>
+                </div>
+            </div>
+            <div class="back-to-shop"><a routerLink="/car/carList">&leftarrow;</a><span class="text-muted">Back to shopping</span></div>
+        </div>
+        <div class="col-md-4 summary" style="background-color:#1282A2">
+            <div><h5 style="color: white"><b>Summary</b></h5></div>
+            <hr>
+            <div class="row">
+                <div class="col" style="padding-left:0;color: white;">ITEMS {{cartService.getTotalQuantity()}}</div>
+                <div class="col text-right"></div>
+            </div>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                <div class="col" style="color:white">TOTAL PRICE</div>
+                <div class="col text-right">{{cartService.getTotal()}}</div>
+            </div>
+            <button class="btn">CHECKOUT</button>
+        </div>
+    </div>
+    
+</div>
+<br>
+
+
+      <div class="card">
+            <div class="card-body inner-card">
+                <div class="col"><h4 style="text-align:center; color: #1282A2;"><b>Information Details</b></h4></div>
+                <br>
+                <br>
+                <div class="row justify-content-center">
+                    <form [formGroup]="checkoutForm" ( ></form>
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <div class="form-group"><label for="firstName">First Name</label><input type="text" class="form-control" id="first-name" formControlName="firstName" placeholder="Your name"> </div>
+                        <div class="alert alert-danger" *ngIf="checkoutForm.get('firstName').hasError('required') && checkoutForm.get('firstName').dirty">First name required</div>
+                        <div class="form-group"> <label for="phone">Mobile Number</label> <input type="text" class="form-control" id="Mobile-Number" formControlName="phone" placeholder="(5xx) xxx xx xx"> </div>
+                        <div class="alert alert-danger" *ngIf="checkoutForm.get('lastName').hasError('required') && checkoutForm.get('lastName').dirty">Phone number required</div>
+                        <div class="form-group"> <label for="country">Country</label><input placeholder="Turkey"></div>
+                        <div class="alert alert-danger" *ngIf="checkoutForm.get('country').hasError('required') && checkoutForm.get('country').dirty">Country required</div>
+                    </div>
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <div class="form-group"> <label for="lastName">Last Name</label> <input type="text" class="form-control" id="last-name" formControlName="lastName" placeholder="Your last name"> </div>
+                        <div class="alert alert-danger" *ngIf="checkoutForm.get('lastName').hasError('required') && checkoutForm.get('lastName').dirty">Last name required</div>
+                        <div class="form-group"> <label for="phone">Email</label>  <input type="email" class="form-control" id="email" formControlName="email" placeholder="example@gmail.com"> </div>
+                        <div class="alert alert-danger" *ngIf="checkoutForm.get('email').hasError('required') && checkoutForm.get('email').dirty">Email required</div>
+                        <div class="form-group"> <label for="city">City</label> <select class="form-control"><option formControlName="city" *ngFor="let city of cities" [value]="city.id">{{city.name}}</option></select></div>
+                        <div class="alert alert-danger" *ngIf="checkoutForm.get('city').hasError('required') && checkoutForm.get('city').dirty">City required</div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12 col-lg-10 col-12"><div class="form-group"><label for="contactAddress">Contact Address</label> <textarea class="form-control rounded-0" id="contactAddress" formControlName="contactAddress" style="
+                        height : 100px;
+                        width: 670px;" rows="5"></textarea></div>
+                        <br>
+                    <div class="col-md-12 col-lg-10 col-12"><div class="form-group"><label for="billingAddress">Billing Address</label> <textarea class="form-control rounded-0" id="billingAddress" formControlName="billingAddress" style="
+                        height : 100px;
+                        width: 670px;" rows="5"></textarea></div>
+                        
+                    </div>
+                   
+                        <div class="row justify-content-end">
+                            <div class="col-lg-4 col-auto "><button type="button" class="btn btn-primary btn-block" style="font-size:15px">CHECKOUT</button> </div>
+                        </div>
+                    </div>
+                    
+                </div> 
+            </div>
+        </div>
+        <br>

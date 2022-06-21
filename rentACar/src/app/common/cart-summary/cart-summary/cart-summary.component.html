@@ -1,0 +1,38 @@
+<!-- 
+<li *ngIf="cartItems.length>0" class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+      Your cart
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li *ngFor="let cartItem of cartItems"><a
+         class="dropdown-item">
+         <span class="badge bg-secondary">{{cartItem.quantity}}</span>{{cartItem.car.brandName}}<span class="badge bg-secondary">Sil</span></a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li *ngFor="let cartItem of additionalCartItems"><a
+        class="dropdown-item">
+        <span class="badge bg-secondary">{{cartItem.quantity}}</span>{{cartItem.additionalService.name}}<span class="badge bg-secondary">Sil</span></a></li>
+     <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item">Sepete git</a></li>
+    </ul>
+  </li> -->
+
+
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Your cart
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li *ngFor="let cartItem of cartItems">
+        <a class="dropdown-item">
+        <span class="badge bg-primary" style="padding-right:10px">{{cartItem.quantity}}</span>{{cartItem.car.brandName}}<button class="btn btn-primary" (click)="removeFromCart(cartItem.car)"> Delete</button></a>
+      </li>
+      <li *ngFor="let cartItem of additionalCartItems">
+        <a class="dropdown-item">
+        <span class="badge bg-primary" style="padding-right:10px">{{cartItem.quantity}}</span>{{cartItem.additionalService.name}}<button class="btn btn-primary" (click)="removeFromCart2(cartItem.additionalService)"> Delete</button></a>
+      </li>
+      <p class="ms-3">Total: {{cartService.getTotal()}}</p>
+        <a class="dropdown-item" style="text-align:center" routerLink="/cart-detail">Go to cart
+        </a>
+    </ul>
+  </div>

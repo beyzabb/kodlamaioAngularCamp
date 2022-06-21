@@ -1,0 +1,74 @@
+<br>
+<p-toast position="top-right"></p-toast>
+<h3 style="color: blue">Add new car</h3>
+<form [formGroup]="carAddForm" (ngSubmit)="add()" >
+
+
+<br>
+
+
+
+<div class="form-group">
+    <select class="form-control"
+      required
+      name="brandId"
+      id="brandId"
+      formControlName="brandId"
+    >
+      <option
+        *ngFor="let brand of brands"
+        [value]="brand.id"
+      >{{brand.name}}</option>
+    </select>
+    <div
+      class="alert alert-danger"
+      *ngIf="carAddForm.get('brandId').hasError('required') && carAddForm.get('brandId').touched">
+      Brand required
+    </div>
+</div>
+
+
+
+<br>
+
+<div class="form-group">
+    <select class="form-control"
+      required
+      name="colorId"
+      id="colorId"
+      formControlName="colorId"
+    >
+      <option
+        *ngFor="let color of colors"
+        [value]="color.id"
+      >{{color.name}}</option>
+    </select>
+    <div
+      class="alert alert-danger"
+      *ngIf="carAddForm.get('colorId').hasError('required') && carAddForm.get('colorId').touched">
+      Brand required
+    </div>
+    
+</div>
+
+<br>
+<div class="form-group">
+    <input type="text" id="image" formControlName="image" class="form-control">
+    <div class="alert alert-danger" *ngIf="carAddForm.get('image').hasError('required') && carAddForm.get('image').dirty">Car image required</div>
+</div>
+<br>
+<div class="form-group">
+    <input type="text" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Daily Price">
+    <div class="alert alert-danger" *ngIf="carAddForm.get('dailyPrice').hasError('required') && carAddForm.get('dailyPrice').dirty">Daily price required</div>
+</div>
+<br>
+<div class="form-group">
+    <input type="text" id="description" formControlName="description" class="form-control" placeholder="Description">
+    <div class="alert alert-danger" *ngIf="carAddForm.get('description').hasError('required') && carAddForm.get('description').dirty">Description required</div>
+</div>
+<br>
+
+<button type="submit"  class="btn btn-primary"  [disabled]="carAddForm.invalid">Add</button>
+
+</form>
+

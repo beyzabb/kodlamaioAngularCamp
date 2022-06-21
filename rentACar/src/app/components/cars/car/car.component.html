@@ -1,0 +1,29 @@
+<br>
+<p-toast></p-toast>
+<h3>CAR LIST</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">IMAGE</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">COLOR</th>
+        <th scope="col">BRAND NAME</th>
+        <th scope="col">DAILY PRICE</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <th scope="row">{{car.id}}</th>
+        <td><img src="{{car.image}}" style="width: 40px"/></td>
+        <td>{{car.description}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.dailyPrice}}</td>
+        <td><button type="button" class="btn btn-link" (click)="deleteCar(car.id)"><i class="fa-solid fa-trash-can" style="color:#B80C09"></i></button></td>
+        <td><button type="button" class="btn btn-link" (click)="getCarsById(car)"><i class="fa-solid fa-pen-to-square" style="color:green"></i></button></td>
+        <td><button type="button" class="btn btn-primary" style="background-color: #034078; color: white;" routerLink="/cars/rentCar/{{car.id}}" (click)="addToCart(car)"><i class="fa-solid fa-check" ></i><i class="fa-solid fa-car" style="padding-right:5px ;"></i>RENT</button></td>
+      </tr>
+    </tbody>
+  </table>

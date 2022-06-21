@@ -1,0 +1,25 @@
+<br>
+<h3 style="color:#034078">Login</h3>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+<br>
+<div class="form-group">
+    <input type="text" id="email" formControlName="email" class="form-control" placeholder="example@gmail.com">
+    <div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').dirty">Email required</div>
+</div>
+<br>
+<div class="form-group">
+    <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
+    <div class="alert alert-danger" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').dirty">Password required</div>
+</div>
+<br>
+<p-toast position="top-right"></p-toast>
+<button type="submit"  class="btn btn-primary"  [disabled]="loginForm.invalid">Login</button>
+<button type="submit"  class="btn btn-link"  routerLink="/register">You're not a member? Register!</button>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+      Remember me
+    </label>
+  </div>
+</form>

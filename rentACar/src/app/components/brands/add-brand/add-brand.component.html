@@ -1,0 +1,18 @@
+<br>
+<h3 style="color: blue">Add new brand</h3>
+<form [formGroup]="brandAddForm" (ngSubmit)="add()" >
+
+<br>
+<div class="form-group">
+    <input type="text" id="name" formControlName="name" class="form-control" placeholder="Brand name">
+    <div class="alert alert-danger" *ngIf="brandAddForm.get('name').hasError('required') && brandAddForm.get('name').dirty">Brand name required</div>
+</div>
+<br>
+<div class="form-group">
+    <input type="text" id="image" formControlName="image" class="form-control">
+    <div class="alert alert-danger" *ngIf="brandAddForm.get('image').hasError('required') && brandAddForm.get('image').dirty">Brand image required</div>
+</div>
+<br>
+<p-toast position="top-right"></p-toast>
+<button type="submit"  class="btn btn-primary"  [disabled]="brandAddForm.invalid">Add</button>
+</form>

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand" style="background-color: #034078">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color:white" >RentACar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="color:white">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="car/addCar" style="color:white">Add Car</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="car/carList" style="color:white">Car List</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color:white">Contact Us</a>
+          </li>
+        </ul>
+        <button class="btn btn-primary" routerLink="car/carList" *ngIf="isLoggedIn()==false" style="margin-right: 15px; background-color:#1282A2; border-color:#1282A2">Sign In</button>,
+        <button class="btn btn-primary" routerLink="/login" *ngIf="isLoggedIn()==true" style="margin-right: 15px; background-color:#1282A2; border-color:#1282A2">Log out</button>
+        <app-cart-summary></app-cart-summary>
+      </div>
+    </div>
+  </nav>
+   
